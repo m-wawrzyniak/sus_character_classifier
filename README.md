@@ -61,7 +61,7 @@ run_hac.sh
 ```
 git clone https://github.com/m-wawrzyniak/sus_character_classifier
 cd sus_character_classifier
-run_hac.sh
+bash run_hac.sh
 ```
 
 After running the executive file and setting up the venv, you will be asked to provide the path to the input .csv file.
