@@ -12,7 +12,7 @@ random.seed(121)
 root = os.path.dirname(os.path.abspath(__file__))
 
 # THIS HAS TO BE CHANGED TO TAKE THE PATH OF INPUT LIST FROM THE COMMAND-LINE
-dataset_path = root + "/training_samples"
+dataset_path = "C:/Users/matti/data/training_samples"
 input_file_path = root + "/input_files/complete_input.csv"
 dh.create_complete_input_file(dataset_path, input_file_path)
 # END
