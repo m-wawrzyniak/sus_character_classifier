@@ -5,23 +5,27 @@ import clustering_models as cm
 import numpy as np
 import random
 import os
+import sys
 
 random.seed(121)
 
 # Paths
 root = os.path.dirname(os.path.abspath(__file__))
-
-# THIS HAS TO BE CHANGED TO TAKE THE PATH OF INPUT LIST FROM THE COMMAND-LINE
-dataset_path = "C:/Users/matti/data/training_samples"
-input_file_path = root + "/input_files/complete_input.csv"
-dh.create_complete_input_file(dataset_path, input_file_path)
-# END
-
 save_csv_path = root + "/output_files/complete_results.csv"
 save_html_path = root + "/output_files/complete_results.html"
 
+# User input of the input_file.csv
+if len(sys.argv) < 2:
+    print("Please provide the input dataset path:")
+    sys.exit(1)
+input_dir = sys.argv[1]
+if not os.path.isfile(input_dir):
+    print(f"Provided path '{input_dir}' is not a valid file.")
+    exit(1)
+print(f"Dataset path: {input_dir}")
+
 # Loading and preprocessing the data
-X_df = dh.load_images(input_file_path)
+X_df = dh.load_images(input_dir)
 X_size = X_df.shape[0]
 
 # Parametrizing the PCA and reducing the dimensionality of the data

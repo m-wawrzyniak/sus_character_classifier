@@ -85,3 +85,6 @@ def test_main_hac():
     dh.save_output_csv(images_df, labels, save_path_csv)
     dh.save_output_html(images_df, labels, save_path_html)
 
+"""dataset_path = "C:/Users/matti/data/training_samples"
+input_file_path = "C:/Users/matti/data//complete_input.csv"
+dh.create_complete_input_file(dataset_path, input_file_path)"""
