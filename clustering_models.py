@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def perform_hac(X_prep, thresh=5.0, linkage='ward'):
+def perform_hac(X_prep, thresh, linkage='ward'):
     """
     Performs Hierarchical Agglomerative Clustering (HAC) without predefining number of clusters.
 

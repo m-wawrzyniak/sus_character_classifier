@@ -41,7 +41,7 @@ def load_images(path, resize=32, center=True):
 
 def create_subsample_input_file(input_dir, save_dir, n_img):
     """
-    Creates an .csv input file from the images in the 'path' directory.
+    Creates an .csv input file from the images in the input_dir.
     The input file is 'n' random paths from the directory.
     :return:
     """
@@ -61,6 +61,12 @@ def create_subsample_input_file(input_dir, save_dir, n_img):
 
 
 def create_complete_input_file(input_dir, save_dir):
+    """
+    Creates an .csv input file from the images in the input_dir.
+    :param input_dir:
+    :param save_dir:
+    :return:
+    """
     input_dir = Path(input_dir)  # create a Path object
     all_pngs = [str((input_dir / f).resolve().as_posix()) # save the absolute path within given directory
                 for f in os.listdir(input_dir)
@@ -117,30 +123,3 @@ def save_output_html(images_df, labels, output_path):
         f.write('</body></html>')
 
     print(f'Output .html saved to {output_path}')
-
-# Legacy code
-
-def create_complete_input_file_legacy(input_dir, save_dir, test_size=0.2):
-    input_dir = Path(input_dir)  # create a Path object
-    all_pngs = [str((input_dir / f).resolve().as_posix()) # save the absolute path within given directory
-                for f in os.listdir(input_dir)
-                if (input_dir / f).is_file() and f.lower().endswith('.png')] # if the this path points to file and has .png format
-    random.shuffle(all_pngs)  # shuffling the images
-
-    # splitting the dataset
-    split_id = int(len(all_pngs) * (1 - test_size))
-    tr_paths = all_pngs[:split_id]
-    test_paths = all_pngs[split_id:]
-
-    tr_df = pd.DataFrame(tr_paths, columns=['_'])
-    test_df = pd.DataFrame(test_paths, columns=['_'])
-
-    # saving the input files into corresponding .csv files
-    save_dir = Path(save_dir)
-    tr_path = save_dir / 'tr_input.csv'
-    test_path = save_dir / 'test_input.csv'
-    tr_df.to_csv(tr_path, index=False, header=False)
-    test_df.to_csv(test_path, index=False, header=False)
-
-    print(f"tr_input saved to {tr_path} ({len(tr_df)})")
-    print(f"test_input saved to {test_path} ({len(test_df)})")

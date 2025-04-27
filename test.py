@@ -8,6 +8,11 @@ import cv2
 import matplotlib.pyplot as plt
 import random
 
+"""
+The following file was meant as testing cases while developing the project.
+None of them should be run on your machine.
+"""
+
 random.seed(121)
 
 def test_loading_images():
@@ -24,11 +29,6 @@ def test_sampling_dataset(n_img):
     train_dir = "C:/Users/matti/PycharmProjects/sus_character_classifier/training_samples"
     save_dir = f"C:/Users/matti/PycharmProjects/sus_character_classifier/input_files/subsamp{n_img}.csv"
     ss_input_dir = dh.create_subsample_input_file(train_dir, save_dir, n_img=n_img)
-
-def test_spliting_complete():
-    train_dir = "C:/Users/matti/PycharmProjects/sus_character_classifier/training_samples"
-    save_dir = 'C:/Users/matti/PycharmProjects/sus_character_classifier/input_files'
-    dh.create_complete_input_file(train_dir, save_dir, 0.2)
 
 
 def test_pca_choice():
@@ -85,6 +85,14 @@ def test_main_hac():
     dh.save_output_csv(images_df, labels, save_path_csv)
     dh.save_output_html(images_df, labels, save_path_html)
 
-"""dataset_path = "C:/Users/matti/data/training_samples"
-input_file_path = "C:/Users/matti/data//complete_input.csv"
-dh.create_complete_input_file(dataset_path, input_file_path)"""
+
+def test_creating_input_win():
+    dataset_path = "C:/Users/matti/data/training_samples"
+    input_file_path = "C:/Users/matti/data//complete_input.csv"
+    dh.create_complete_input_file(dataset_path, input_file_path)
+
+
+def test_creating_input_lin():
+    dataset_path = "/home/mateusz-wawrzyniak/data/training_samples"
+    input_file_path = "/home/mateusz-wawrzyniak/data/complete_input.csv"
+    dh.create_complete_input_file(dataset_path, input_file_path)

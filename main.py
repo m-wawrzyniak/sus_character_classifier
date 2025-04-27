@@ -7,6 +7,11 @@ import random
 import os
 import sys
 
+"""
+Main file. Input as a path to images list in .csv format.
+Outputs .csv and .html files according to the task instruction. 
+"""
+
 random.seed(121)
 
 # Paths
