@@ -64,4 +64,8 @@ cd sus_character_classifier
 run_hac.sh
 ```
 
+After running the executive file and setting up the venv, you will be asked to provide the path to the input .csv file.
+
+All output files will be saved within the project directory in file output_files.
+
 ## Author: Mateusz Wawrzyniak, 446 271
